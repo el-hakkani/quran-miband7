@@ -1,0 +1,1 @@
+export const requested_surah_starting_indexes = [0,2893,2908,2916];

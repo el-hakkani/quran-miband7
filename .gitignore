@@ -1,0 +1,7 @@
+**/node_modules
+**/dist
+**/build
+**/.DS_STORE
+**/temp
+app/assets/pages
+app/assets/surah
