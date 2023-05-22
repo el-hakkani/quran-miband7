@@ -2,12 +2,18 @@
 
 The Noble Quran app generator for Mi Band 7 (unofficial).
 
+![Video](preview.gif)
+
 ### Preparation
 
 * Use [Gadgetbridge](https://github.com/Freeyourgadget/Gadgetbridge) android app to protect your data and able to install custom apps like this The Noble Quran app.
 * Pair your device [https://codeberg.org/Freeyourgadget/Gadgetbridge/wiki/Huami-Server-Pairing](https://codeberg.org/Freeyourgadget/Gadgetbridge/wiki/Huami-Server-Pairing)
 * Install [ADB](https://stackoverflow.com/a/32314718/10985637) to be able to send files to the app or use any alternatives.
 * Use [https://github.com/melianmiko/zmake](https://github.com/melianmiko/zmake) to compile the app. I do not suggest you download compiled version. Use this repository and compile by your self after checking the sourcecode.
+
+### Using Compiled Versions
+
+* Visit [releases](https://github.com/el-hakkani/quran-miband7/releases/tag/1.0.0) page to get BIN files. You can find separate BIN files for each surah as well as groups of surahs and one hand-picked release.
 
 ### Build
 
