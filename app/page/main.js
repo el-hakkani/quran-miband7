@@ -56,7 +56,7 @@ class MainScreen {
 
   infoRows = [
     ["Emircan ERKUL", "Developer"],
-    ["github.com/el-hakkani", "Download from"]
+    ["github.com/el-haqqani", "Download from"]
   ];
 
   uninstallText = t("action_uninstall");

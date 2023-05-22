@@ -13,7 +13,7 @@ The Noble Quran app generator for Mi Band 7 (unofficial).
 
 ### Using Compiled Versions
 
-* Visit [releases](https://github.com/el-hakkani/quran-miband7/releases/tag/1.0.0) page to get BIN files. You can find separate BIN files for each surah as well as groups of surahs and one hand-picked release.
+* Visit [releases](https://github.com/el-haqqani/quran-miband7/releases/tag/1.0.0) page to get BIN files. You can find separate BIN files for each surah as well as groups of surahs and one hand-picked release.
 
 ### Build
 
