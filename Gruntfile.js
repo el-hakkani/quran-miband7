@@ -7,6 +7,7 @@ module.exports = function (grunt) {
         2956, 2962, 2966, 2969, 2972, 2974, 2976, 2978, 2981, 2983, 2987, 2989, 2991, 2994, 2996, 2997, 2999, 3001, 3003, 3005, 3006, 3008, 3009, 3011, 3012, 3014];
 
     grunt.loadNpmTasks('grunt-exec');
+    grunt.loadNpmTasks("grunt-then");
 
     grunt.initConfig({
         exec: {
@@ -43,6 +44,13 @@ module.exports = function (grunt) {
             return aNum - bNum;
         });
 
+        if ((start.toString().includes(',') || !isNaN(start) && !isNaN(end))
+            && process.env.with_amanar_rasulu == 1) {
+            grunt.file.copy(pPaths[238], 'app/' + pPaths[238]);
+            grunt.file.copy(pPaths[239], 'app/' + pPaths[239]);
+            grunt.file.copy(pPaths[240], 'app/' + pPaths[240]);
+        }
+
         if (start.toString().includes(',')) {
             let requestedPages = start.toString().split(',').map(s => parseInt(s));
             requestedPages.forEach(page => {
@@ -78,6 +86,133 @@ module.exports = function (grunt) {
                 grunt.task.run('exec:push');
         } else {
             grunt.log.write('Invalid Input Type').error();
+        }
+    });
+
+    grunt.registerTask('build-all-surah', 'Build the APP for all surahs', function () {
+        const surah = [
+            'surah-al-fatihah',
+            'surah-al-baqarah',
+            'surah-aali-imran',
+            'surah-an-nisa',
+            'surah-al-ma-idah',
+            'surah-al-an-am',
+            'surah-al-a-raf',
+            'surah-al-anfal',
+            'surah-at-taubah',
+            'surah-yunus',
+            'surah-hud',
+            'surah-yusuf',
+            'surah-ar-ra-d',
+            'surah-ibrahim',
+            'surah-al-hijr',
+            'surah-an-nahl',
+            'surah-al-isra',
+            'surah-al-kahf',
+            'surah-maryam',
+            'surah-ta-ha',
+            'surah-al-anbiya',
+            'surah-al-haj',
+            'surah-al-mu-minun',
+            'surah-an-nur',
+            'surah-al-furqan',
+            'surah-ash-shu-ara',
+            'surah-an-naml',
+            'surah-al-qasas',
+            'surah-al-ankabut',
+            'surah-ar-rum',
+            'surah-luqman',
+            'surah-as-sajdah',
+            'surah-al-ahzab',
+            'surah-saba',
+            'surah-al-fatir',
+            'surah-ya-sin',
+            'surah-as-saffah',
+            'surah-sad',
+            'surah-az-zumar',
+            'surah-ghafar',
+            'surah-fusilat',
+            'surah-ash-shura',
+            'surah-az-zukhruf',
+            'surah-ad-dukhan',
+            'surah-al-jathiyah',
+            'surah-al-ahqaf',
+            'surah-muhammad',
+            'surah-al-fat-h',
+            'surah-al-hujurat',
+            'surah-qaf',
+            'surah-adz-dzariyah',
+            'surah-at-tur',
+            'surah-an-najm',
+            'surah-al-qamar',
+            'surah-ar-rahman',
+            'surah-al-waqi-ah',
+            'surah-al-hadid',
+            'surah-al-mujadilah',
+            'surah-al-hashr',
+            'surah-al-mumtahanah',
+            'surah-as-saf',
+            'surah-al-jum-ah',
+            'surah-al-munafiqun',
+            'surah-at-taghabun',
+            'surah-at-talaq',
+            'surah-at-tahrim',
+            'surah-al-mulk',
+            'surah-al-qalam',
+            'surah-al-haqqah',
+            'surah-al-ma-arij',
+            'surah-nuh',
+            'surah-al-jinn',
+            'surah-al-muzammil',
+            'surah-al-mudaththir',
+            'surah-al-qiyamah',
+            'surah-al-insan',
+            'surah-al-mursalat',
+            'surah-an-naba',
+            'surah-an-nazi-at',
+            'surah-abasa',
+            'surah-at-takwir',
+            'surah-al-infitar',
+            'surah-al-mutaffifin',
+            'surah-al-inshiqaq',
+            'surah-al-buruj',
+            'surah-at-tariq',
+            'surah-al-a-la',
+            'surah-al-ghashiyah',
+            'surah-al-fajr',
+            'surah-al-balad',
+            'surah-ash-shams',
+            'surah-al-layl',
+            'surah-adh-dhuha',
+            'surah-al-inshirah',
+            'surah-at-tin',
+            'surah-al-alaq',
+            'surah-al-qadar',
+            'surah-al-bayinah',
+            'surah-az-zalzalah',
+            'surah-al-adiyah',
+            'surah-al-qari-ah',
+            'surah-at-takathur',
+            'surah-al-asr',
+            'surah-al-humazah',
+            'surah-al-fil',
+            'surah-quraish',
+            'surah-al-ma-un',
+            'surah-al-kauthar',
+            'surah-al-kafirun',
+            'surah-an-nasr',
+            'surah-al-masad',
+            'surah-al-ikhlas',
+            'surah-al-falaq',
+            'surah-an-nas'
+        ];
+
+        process.env.push = 0;
+        for (let index = 1; index <= 114; index++) {
+            grunt.task.run(`build:${index}:${index}`).then(function () {
+                grunt.log.write(`Generating The Holly Quran Watch 7 App with ${surah[index - 1]}`).ok();
+                grunt.file.copy('app/dist/app.bin', `compile/surah/${index}-${surah[index - 1]}.bin`);
+            });
         }
     });
 };
